@@ -3,3 +3,6 @@
       {{getEmployee.name}} - {{getEmployee.position}}
   </li>
 </ul>
+<div *ngIf = "employeeList == 0">
+  <div class="alert alert-success"><strong>No data</strong> for view.!!!</div>
+</div> 

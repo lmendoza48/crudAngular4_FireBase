@@ -26,7 +26,7 @@
   <div class="form-group">
     <button type="submit" class="btn btn-secondary" [disabled] ="!employeeForm.valid" >
       <i class="fa fa-floppy-o"></i> Subtmit </button>
-    <button id="secodn" type="button" class="btn btn-secondary" *ngIf="employeeService.selectedEmployee.$key != ''" (click) = "onDelete(employeeForm)">
+    <button id="secodn" type="button" class="btn btn-secondary" *ngIf="employeeService.selectedEmployee.$key != null" (click) = "onDelete(employeeForm)">
       <i class="fa fa-trash"></i> Delete </button>
     <button id="third" type="button" class="btn btn-secondary third" (click) = "resetForm(employeeForm)">
       <i class="fa fa-repeat"></i> Reset </button>
