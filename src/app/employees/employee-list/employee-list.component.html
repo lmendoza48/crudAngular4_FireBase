@@ -1,8 +1,22 @@
-<ul class="list-group hover">
-  <li class="list-group-item" *ngFor="let getEmployee of employeeList" (click) = "onItemClick(getEmployee)" >
-      {{getEmployee.name}} - {{getEmployee.position}}
-  </li>
-</ul>
 <div *ngIf = "employeeList == 0">
   <div class="alert alert-success"><strong>No data</strong> for view.!!!</div>
 </div> 
+<div *ngFor="let getEmployee of employeeList; let i = index" >
+    <div id="accordion">
+        <div class="card">
+          <div class="card-header">
+            <a class="card-link" data-toggle="collapse" href="#collapseOne_{{i}}">
+              {{getEmployee.name}} #{{i}}
+            </a>
+          </div>
+          <div id="collapseOne_{{i}}" class="collapse" data-parent="#accordiont">
+            <div class="card-body">
+              {{getEmployee.description}} - {{getEmployee.comment}} <br>
+              <div class="button-group-align">
+                  <button class="btn btn-secunddary" (click)= "onItemClick(getEmployee)"><i class="fa fa-refresh"></i></button>
+                  <button class="btn btn-danger"  (click)= "onDelete(getEmployee)" ><i class="fa fa-trash"></i></button>
+              </div> 
+            </div>
+          </div>
+    </div>
+</div>

@@ -30,4 +30,10 @@ export class EmployeeListComponent implements OnInit {
     this.employeeService.selectedEmployee = Object.assign({}, emp);
   }
 
+  onDelete(emp : Employee){
+    if(confirm('Are you sure of delete this element!!!') == true){
+      this.employeeService.deleteEmployee(emp);
+    }
+  }
+
 }

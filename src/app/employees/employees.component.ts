@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { EmployeeService } from './shared/employee.service';
+import { AuthService } from 'src/app/login-auth/shared/auth.service';
 
 @Component({
   selector: 'app-employees',
@@ -9,9 +10,16 @@ import { EmployeeService } from './shared/employee.service';
 })
 export class EmployeesComponent implements OnInit {
 
-  constructor( private employeeService : EmployeeService) { }
+  isAuth = false;
+
+  constructor( public auth : AuthService ,private employeeService : EmployeeService) { }
 
   ngOnInit() {
+    this.isAuth = this.auth.isUserEmailLoggedIn;
+  }
+
+  getBack(){
+    this.auth.signOut();
   }
 
 }

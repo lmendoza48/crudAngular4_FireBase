@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {NgForm} from '@angular/forms';
 
 import{ EmployeeService } from '../shared/employee.service';
+import { AuthService } from 'src/app/login-auth/shared/auth.service';
 
 @Component({
   selector: 'app-employee',
@@ -10,10 +11,13 @@ import{ EmployeeService } from '../shared/employee.service';
 })
 export class EmployeeComponent implements OnInit {
 
-  constructor(private employeeService : EmployeeService) { }
+  isAuth = false;
+
+  constructor(public auth : AuthService, private employeeService : EmployeeService) { }
 
   ngOnInit() {
     this.resetForm();
+    this.isAuth =this.auth.isUserEmailLoggedIn;
   }
 
   /** metodo para traer los datos del formmulario
@@ -22,14 +26,9 @@ export class EmployeeComponent implements OnInit {
   onSubmit(form : NgForm)
   {
     if(form.value.$key == null )
-    {
       this.employeeService.insertEmployee(form.value);
-      //alert("Save complet without error!!!!");
-    }else
-    {
-      this.employeeService.updateEmployee(form.value);
-      //alert("Update element without error!!!!!");
-    }  
+      else
+      this.employeeService.updateEmployee(form.value);  
     this.resetForm(form)
   }
 
@@ -40,17 +39,12 @@ export class EmployeeComponent implements OnInit {
     this.employeeService.selectedEmployee = {
       $key : null,
       name : '',
-      position : '',
-      office : '',
-      salary : 0,
+      description : '',
+      comment : '',
     }
   }
 
-  onDelete(emp : NgForm){
-    if(confirm('Are you sure of delete this element!!!') == true){
-      this.employeeService.deleteEmployee(emp.value);
-      this.resetForm(emp);
-    }
+  onLogout(){
+    this.auth.signOut();
   }
-
 }

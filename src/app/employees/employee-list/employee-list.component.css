@@ -1,0 +1,8 @@
+div.button-group-align{
+    position: relative;
+    left: 80%;
+}
+div.button-group-align button.btn.btn-danger{
+    position: relative;
+    left: 1%;
+}
