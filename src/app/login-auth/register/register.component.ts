@@ -15,7 +15,7 @@ export class RegisterComponent implements OnInit {
   errorMessage: {name: string, message : string} = {name : '', message : ''};
   userList : UserInfo[];
 
-  constructor(private userServices : AuthService, private router : Router ) { }
+  constructor(public userServices : AuthService, private router : Router ) { }
 
   ngOnInit() {
   }

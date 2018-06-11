@@ -13,7 +13,7 @@ export class EmployeeComponent implements OnInit {
 
   isAuth = false;
 
-  constructor(public auth : AuthService, private employeeService : EmployeeService) { }
+  constructor(public auth : AuthService, public employeeService : EmployeeService) { }
 
   ngOnInit() {
     this.resetForm();
