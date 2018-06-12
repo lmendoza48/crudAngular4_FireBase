@@ -12,7 +12,7 @@ export class EmployeesComponent implements OnInit {
 
   isAuth = false;
 
-  constructor( public auth : AuthService ,private employeeService : EmployeeService) { }
+  constructor( public auth : AuthService ,public employeeService : EmployeeService) { }
 
   ngOnInit() {
     this.isAuth = this.auth.isUserEmailLoggedIn;

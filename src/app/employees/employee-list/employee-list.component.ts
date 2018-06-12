@@ -11,8 +11,10 @@ import { element } from 'protractor';
   styleUrls: ['./employee-list.component.css']
 })
 export class EmployeeListComponent implements OnInit {
+
   employeeList : Employee[];
-  constructor(private employeeService : EmployeeService) { }
+  
+  constructor(public employeeService : EmployeeService) { }
 
   ngOnInit() {
     var x = this.employeeService.getData();
