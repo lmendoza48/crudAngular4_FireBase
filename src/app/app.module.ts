@@ -46,8 +46,7 @@ const appRoutes: Routes = [
     AngularFireAuthModule,
     FormsModule,
     RouterModule.forRoot(
-      appRoutes, //route where my app
-      { enableTracing: true } // <-- debugging purposes only
+      appRoutes //route where my app
     )
   ],
   providers: [AuthService],
